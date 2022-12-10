@@ -15,7 +15,6 @@ class Program
         string line;
         while ((line = Console.ReadLine()) != null)
         {
-            // Console.Write("> ");
             Console.Out.Flush();
             try
             {

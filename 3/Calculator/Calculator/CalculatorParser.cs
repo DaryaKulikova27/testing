@@ -72,18 +72,18 @@ public class CalculatorParser
 
     private object? ExprFn(Match match)
     {
-        if (string.IsNullOrEmpty(match.Groups[8].Value)) // simple eq
+        if (string.IsNullOrEmpty(match.Groups[8].Value))
             _engine.DeclareFunc(match.Groups[1].Value, match.Groups[10].Value);
-        else // triple stmt
+        else
             _engine.DeclareFunc(match.Groups[1].Value, match.Groups[5].Value, match.Groups[7].Value, match.Groups[8].Value);
         return null;
     }
 
     private object? ExprLet(Match match)
     {
-        if (string.IsNullOrEmpty(match.Groups[6].Value)) // simple eq
+        if (string.IsNullOrEmpty(match.Groups[6].Value))
             _engine.LetVar(match.Groups[1].Value, double.Parse(match.Groups[4].Value, CultureInfo.InvariantCulture));
-        else // triple stmt
+        else
             _engine.LetVar(match.Groups[1].Value, match.Groups[6].Value);
         return null;
     }
