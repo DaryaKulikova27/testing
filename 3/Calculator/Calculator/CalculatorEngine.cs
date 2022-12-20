@@ -3,7 +3,7 @@ using Calculator.exceptions;
 
 namespace Calculator
 {
-    public class CalculatorEngine
+    public class CalculatorEngine : ICalculatorEngine
     {
         private interface IExecutable
         {

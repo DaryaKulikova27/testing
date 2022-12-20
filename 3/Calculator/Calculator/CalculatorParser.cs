@@ -1,4 +1,3 @@
-using System.Globalization;
 using System.Text.RegularExpressions;
 using Calculator.exceptions;
 
@@ -20,7 +19,7 @@ public class CalculatorParser
             @"^fn\s+([a-zA-Z_]+([a-zA-Z0-9_])*)\s*=\s*((([a-zA-Z_]+([a-zA-Z0-9_])*)\s*([-|+|*|\/])\s*([a-zA-Z_]+([a-zA-Z0-9_])*))|([a-zA-Z_]+([a-zA-Z0-9_])*))$",
             RegexOptions.Compiled | RegexOptions.IgnoreCase),
         RegexLet = new(
-            @"^let\s+([a-zA-Z_]+([a-zA-Z0-9_])*)\s*=\s*(([0-9]*([\.,][0-9_]*)?)|([a-zA-Z_]+([a-zA-Z0-9_])*))$",
+            @"^let\s+([a-zA-Z_]+([a-zA-Z0-9_])*)\s*=\s*(([0-9]*(\.[0-9_]*)?)|([a-zA-Z_]+([a-zA-Z0-9_])*))$",
             RegexOptions.Compiled | RegexOptions.IgnoreCase),
         RegexVar = new(
             @"^var\s+([a-zA-Z_]+([a-zA-Z0-9_])*)$",
@@ -28,10 +27,11 @@ public class CalculatorParser
 
     private readonly Dictionary<Regex, Func<Match, object?>> _matchers;
 
-    private readonly CalculatorEngine _engine = new();
+    private readonly ICalculatorEngine _engine;
 
-    public CalculatorParser()
+    public CalculatorParser(ICalculatorEngine engine)
     {
+        _engine = engine;
         _matchers = new Dictionary<Regex, Func<Match, object?>>
         {
             {RegexPrintvars, ExprPrintVars},
@@ -43,6 +43,9 @@ public class CalculatorParser
         };
     }
 
+    public CalculatorParser() :
+        this(new CalculatorEngine()) { }
+
     public object? ReadExpression(string expression)
     {
         expression = expression.Trim();
@@ -52,6 +55,7 @@ public class CalculatorParser
             if (matches.Count != 1) continue;
             return pair.Value(matches[0]);
         }
+
         throw new InvalidExpressionException(expression);
     }
 
@@ -72,18 +76,19 @@ public class CalculatorParser
 
     private object? ExprFn(Match match)
     {
-        if (string.IsNullOrEmpty(match.Groups[8].Value))
+        if (string.IsNullOrEmpty(match.Groups[8].Value)) // simple eq
             _engine.DeclareFunc(match.Groups[1].Value, match.Groups[10].Value);
-        else
-            _engine.DeclareFunc(match.Groups[1].Value, match.Groups[5].Value, match.Groups[7].Value, match.Groups[8].Value);
+        else // triple stmt
+            _engine.DeclareFunc(match.Groups[1].Value, match.Groups[5].Value, match.Groups[7].Value,
+                match.Groups[8].Value);
         return null;
     }
 
     private object? ExprLet(Match match)
     {
-        if (string.IsNullOrEmpty(match.Groups[6].Value))
-            _engine.LetVar(match.Groups[1].Value, double.Parse(match.Groups[4].Value, CultureInfo.InvariantCulture));
-        else
+        if (string.IsNullOrEmpty(match.Groups[6].Value)) // simple eq
+            _engine.LetVar(match.Groups[1].Value, Double.Parse(match.Groups[4].Value));
+        else // triple stmt
             _engine.LetVar(match.Groups[1].Value, match.Groups[6].Value);
         return null;
     }

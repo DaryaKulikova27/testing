@@ -16,27 +16,55 @@ namespace CalculatorTests
         [TestMethod]
         public void VarNormal()
         {
-            engine.DeclareVar("test");
+            try
+            {
+                engine.DeclareVar("test");
+            }
+            catch (Exception e)
+            {
+                Assert.Fail(e.Message);
+            }
         }
 
         [TestMethod]
         public void LetNormalFromLiteral()
         {
-            engine.LetVar("test", 123.4);
+            try
+            {
+                engine.LetVar("test", 123.4);
+            }
+            catch (Exception e)
+            {
+                Assert.Fail(e.Message);
+            }
         }
 
         [TestMethod]
         public void LetNormalFromId()
         {
-            engine.DeclareVar("test2");
-            engine.LetVar("test", "test2");
+            try
+            {
+                engine.DeclareVar("test2");
+                engine.LetVar("test", "test2");
+            }
+            catch (Exception e)
+            {
+                Assert.Fail(e.Message);
+            }
         }
 
         [TestMethod]
         public void FnNormalFromId()
         {
-            engine.DeclareVar("test2");
-            engine.DeclareFunc("test", "test2");
+            try
+            {
+                engine.DeclareVar("test2");
+                engine.DeclareFunc("test", "test2");
+            }
+            catch (Exception e)
+            {
+                Assert.Fail(e.Message);
+            }
         }
 
         [TestMethod]
@@ -83,8 +111,15 @@ namespace CalculatorTests
         [TestMethod]
         public void LetDuplication()
         {
-            engine.LetVar("test2", 9);
-            engine.LetVar("test2", 9);
+            try
+            {
+                engine.LetVar("test2", 9);
+                engine.LetVar("test2", 9);
+            }
+            catch (Exception e)
+            {
+                Assert.Fail(e.Message);
+            }
         }
 
         [TestMethod]

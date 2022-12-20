@@ -1,77 +1,88 @@
 using Calculator;
 using Calculator.exceptions;
 using MSTestExtensions;
+using Telerik.JustMock;
 
 namespace CalculatorTests
 {
     [TestClass]
     public class CalculatorParserTest
     {
-        private CalculatorParser parser = new();
+        private ICalculatorEngine mockEngine;
+        private readonly CalculatorParser _parser;
+
+        public CalculatorParserTest()
+        {
+            mockEngine = Mock.Create<ICalculatorEngine>();
+            _parser = new CalculatorParser(mockEngine);
+        }
 
         [TestMethod]
         public void SyntaxLetInteger()
         {
-            parser.ReadExpression("let a = 6");
-        }
-        
-        [TestMethod]
-        public void SyntaxLetFloat()
-        {
-            parser.ReadExpression("let a = 6.5");
+            Mock.Arrange(() => mockEngine.LetVar("a", 6)).MustBeCalled();
+
+            _parser.ReadExpression("let a = 6");
+
+            Mock.Assert(mockEngine); 
         }
         
         [TestMethod]
         public void SyntaxLetIdOfVar()
         {
-            parser.ReadExpression("let a = 6.5");
-            parser.ReadExpression("let b = a");
-        }
-        
-        [TestMethod]
-        public void SyntaxLetIdOfFun()
-        {
-            parser.ReadExpression("let a = 6.5");
-            parser.ReadExpression("fn test = a");
-            parser.ReadExpression("let b = test");
+            Mock.Arrange(() => mockEngine.LetVar("b", "a")).MustBeCalled();
+
+            _parser.ReadExpression("let b = a");
+
+            Mock.Assert(mockEngine); 
         }
         
         [TestMethod]
         public void SyntaxVar()
         {
-            parser.ReadExpression("var a");
+            Mock.Arrange(() => mockEngine.DeclareVar("a")).MustBeCalled();
+            _parser.ReadExpression("var a");
+            Mock.Assert(mockEngine);
         }
-        
+
+        [TestMethod]
+        public void SyntaxFn3Arg()
+        {
+            Mock.Arrange(() => mockEngine.DeclareFunc("c", "a", "+", "b")).MustBeCalled();
+            _parser.ReadExpression("fn c = a + b");
+            Mock.Assert(mockEngine);
+        }
+
         [TestMethod]
         public void SyntaxFn()
         {
-            parser.ReadExpression("let a=6.5");
-            parser.ReadExpression("fn b=a");
-            parser.ReadExpression("fn c=a+b");
-            Assert.AreEqual(13d, (double) parser.ReadExpression("print c"), double.Epsilon, "Mismatched value from calculator");
+            Mock.Arrange(() => mockEngine.DeclareFunc("c", "a")).MustBeCalled();
+            _parser.ReadExpression("fn c = a");
+            Mock.Assert(mockEngine);
         }
-        
+
         [TestMethod]
         public void SyntaxPrints()
         {
-            parser.ReadExpression("let a = 6");
-            parser.ReadExpression("fn b = a");
-            parser.ReadExpression("fn c = a + b");
-            Assert.AreEqual(12d, (double) parser.ReadExpression("print c"), double.Epsilon, "Mismatched value from calculator");
-            Assert.AreEqual("a: 6\n", (string) parser.ReadExpression("printvars"), "Mismatched value from calculator");
-            Assert.AreEqual("b: 6\nc: 12\n", (string) parser.ReadExpression("printfns"), "Mismatched value from calculator");
+            Mock.Arrange(() => mockEngine.GetValueOperator("c")).MustBeCalled();
+            Mock.Arrange(() => mockEngine.PrintFunctions()).Returns("printFunctionsResult");
+            Mock.Arrange(() => mockEngine.PrintVars()).Returns("printVarsResult");
+            Assert.AreEqual("printFunctionsResult", _parser.ReadExpression("printfns"));
+            Assert.AreEqual("printVarsResult", _parser.ReadExpression("printvars"));
+            _parser.ReadExpression("print c");
+            Mock.Assert(mockEngine); 
         }
         
         [TestMethod]
         public void SyntaxVarTryToSetValue()
         {
-            Extensions.Throws(() => parser.ReadExpression("var a = 0"), "Invalid expression");
+            Extensions.Throws(() => _parser.ReadExpression("var a = 0"), "Invalid expression");
         }
         
         [TestMethod]
         public void SyntaxFnTryToSetLiteral()
         {
-            Extensions.Throws(() => parser.ReadExpression("fn a = 0"), "Invalid expression");
+            Extensions.Throws(() => _parser.ReadExpression("fn a = 0"), "Invalid expression");
         }
     }
 }
