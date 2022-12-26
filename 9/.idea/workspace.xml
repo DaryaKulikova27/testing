@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9b33f2d-81f0-41ab-b6bd-1b30aa91cf3b" name="Changes" comment="реализована логика 9 лабы">
-      <change afterPath="$PROJECT_DIR$/shopTests/MainTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../10/ShopUITests/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../10/ShopUITests/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../10/ShopUITests/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shop/Converter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/shop/Converter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shop/ProductData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/shop/ProductData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shop/ShopOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/shop/ShopOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testResources/configFile.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testobjects.json" beforeDir="false" afterPath="$PROJECT_DIR$/testResources/testobjects.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shopTests/MainTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/shopTests/MainTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,23 +32,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "true",
-    "Repository.Attach.Sources": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit3",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3": "junit.framework.TestCase",
-    "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "C:/Users/User/source/dashasWorks/testing/9",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit3&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3&quot;: &quot;junit.framework.TestCase&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/source/dashasWorks/testing/9&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\User\source\dashasWorks\testing\9" />
@@ -163,16 +160,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="реализована логика 9 лабы" />
     <option name="LAST_COMMIT_MESSAGE" value="реализована логика 9 лабы" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/shopTests/MainTests.java</url>
-          <line>171</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

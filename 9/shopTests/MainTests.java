@@ -32,13 +32,6 @@ public class MainTests extends Assert {
         return new ShopOperations(apiConfig.baseUri, apiConfig.basePath);
     }
 
-    /*
-    @Test
-    void shouldListAllProducts() throws IOException {
-        List<ProductData> products = service.getProducts();
-        assertNotNull("Список продуктов пуст", products);
-    } */
-
     @Test
     public void shouldListAllProducts() throws IOException {
         List<ProductData> products = service.getProducts();
@@ -172,19 +165,6 @@ public class MainTests extends Assert {
         assertTrue("Продукт изменился", updatedProduct.contentEquals(oldProduct));
         assertTrue("Alias изменился", updatedProduct.alias.equalsIgnoreCase(createdProduct.alias));
     }
-
-    @Test
-    public void shouldNotUpdateWithInvalidId() throws IOException {
-        ProductData newProduct = testProducts.get("valid_update_product_1");
-
-        newProduct.id = "-1";
-        newProduct.alias = "";
-
-        ApiResponse updateResponse = service.updateProduct(newProduct);
-
-        assertFalse("Сервер вернул статус 1", updateResponse.status);
-    }
-
 
     @Test
     public void shouldDelete() throws IOException {
