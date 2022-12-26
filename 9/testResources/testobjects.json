@@ -1,10 +1,10 @@
 {
   "valid_product_1": {
     "category_id": "1",
-    "title": "exampleProduct1",
+    "title": "___valid_product_1",
     "content": "content",
-    "price": "100",
-    "old_price": "10",
+    "price": "555",
+    "old_price": "333",
     "status": "0",
     "keywords": "keywords",
     "description": "description",
@@ -12,9 +12,9 @@
   },
   "valid_product_2": {
     "category_id": "2",
-    "title": "exampleProduct2",
+    "title": "__valid_product_2",
     "content": "content",
-    "price": "10",
+    "price": "333",
     "old_price": "100",
     "status": "1",
     "keywords": "keywords",
@@ -22,8 +22,8 @@
     "hit": "1"
   },
   "valid_product_3": {
-    "category_id": "14",
-    "title": "exampleProduct3",
+    "category_id": "13",
+    "title": "__valid_product_3",
     "content": "content",
     "price": "1000",
     "old_price": "1000",
@@ -33,8 +33,8 @@
     "hit": "0"
   },
   "invalid_product": {
-    "category_id": "16",
-    "title": "invalidProduct1",
+    "category_id": "120000",
+    "title": "__invalid_product",
     "content": "content",
     "price": "1000",
     "old_price": "1000",
@@ -44,18 +44,18 @@
     "hit": "0"
   },
   "valid_update_product_1": {
-    "category_id": "10",
-    "title": "another one title",
+    "category_id": "12",
+    "title": "__valid_update_product_1",
     "content": "new content",
-    "price": "100",
-    "old_price": "200",
+    "price": "444",
+    "old_price": "777",
     "status": "0",
-    "keywords": "new keywords",
-    "description": "new description",
+    "keywords": "keywords",
+    "description": "description",
     "hit": "0"
   },
   "valid_update_product_2": {
-    "category_id": "10",
+    "category_id": "12",
     "content": "new content",
     "price": "100",
     "old_price": "200",
@@ -65,7 +65,7 @@
     "hit": "0"
   },
   "invalid_update_product": {
-    "category_id": "100",
+    "category_id": "10000",
     "title": "new title",
     "content": "new content",
     "price": "100",
@@ -77,14 +77,14 @@
   },
   "not_existing_product": {
     "id": "-1",
-    "category_id": "1",
-    "title": "new title",
-    "content": "new content",
-    "price": "100",
-    "old_price": "200",
+    "category_id": "12",
+    "title": "title",
+    "content": "content",
+    "price": "222",
+    "old_price": "333",
     "status": "0",
-    "keywords": "new keywords",
-    "description": "new description",
+    "keywords": "keywords",
+    "description": "description",
     "hit": "0"
   },
   "null_product": {}
