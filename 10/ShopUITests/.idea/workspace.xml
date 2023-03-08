@@ -5,14 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b486b69-8279-4034-9192-760747ebd23c" name="Changes" comment="10 лаба. Начало положено">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ru/shop/quatle/operations/Authorization.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ru/shop/quatle/operations/ProductSearch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ru/shop/quatle/operations/ShoppingCart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ru/shop/quatle/tests/MainTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../9/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -35,9 +48,31 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "settings.editor.selected.configurable": "settings.sync"
+    "settings.editor.selected.configurable": "build.tools"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="MainTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ShopUITests" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.shop.quatle.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.shop.quatle.tests" />
+      <option name="MAIN_CLASS_NAME" value="ru.shop.quatle.tests.MainTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.MainTests" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -54,11 +89,52 @@
       <option name="project" value="LOCAL" />
       <updated>1672059747240</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="10 лаба. Начало положено">
+      <created>1672085243852</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1672085243852</updated>
+    </task>
+    <task id="LOCAL-00003" summary="10 лаба. Начало положено">
+      <created>1672085252675</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1672085252675</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="10 лаба. Начало положено" />
     <option name="LAST_COMMIT_MESSAGE" value="10 лаба. Начало положено" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand>
+      <path>
+        <item name="ShopUITests" type="b2602c69:ProjectViewProjectNode" />
+        <item name="ShopUITests" type="462c0819:PsiDirectoryNode" />
+      </path>
+      <path>
+        <item name="ShopUITests" type="b2602c69:ProjectViewProjectNode" />
+        <item name="ShopUITests" type="462c0819:PsiDirectoryNode" />
+        <item name="src" type="462c0819:PsiDirectoryNode" />
+      </path>
+      <path>
+        <item name="ShopUITests" type="b2602c69:ProjectViewProjectNode" />
+        <item name="ShopUITests" type="462c0819:PsiDirectoryNode" />
+        <item name="src" type="462c0819:PsiDirectoryNode" />
+        <item name="main" type="462c0819:PsiDirectoryNode" />
+      </path>
+      <path>
+        <item name="ShopUITests" type="b2602c69:ProjectViewProjectNode" />
+        <item name="ShopUITests" type="462c0819:PsiDirectoryNode" />
+        <item name="src" type="462c0819:PsiDirectoryNode" />
+        <item name="main" type="462c0819:PsiDirectoryNode" />
+        <item name="java" type="462c0819:PsiDirectoryNode" />
+      </path>
+    </expand>
+    <select />
   </component>
 </project>

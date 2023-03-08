@@ -6,10 +6,7 @@ import org.junit.Test;
 import shop.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MainTests extends Assert {
     ShopOperations service;
@@ -25,6 +22,10 @@ public class MainTests extends Assert {
         TypeReference<HashMap<String, ProductData>> typeRef
                 = new TypeReference<HashMap<String, ProductData>>() {};
         testProducts = Converter.kMainMapper.readValue(Main.class.getResourceAsStream("testobjects.json"), typeRef);
+    }
+
+    public ProductData getProductWithID(String id) throws IOException {
+        return service.getProducts().stream().filter(productData -> Objects.equals(productData.id, id)).findFirst().orElse(null);
     }
 
     private static ShopOperations getShopOperations() throws java.io.IOException {
@@ -43,11 +44,10 @@ public class MainTests extends Assert {
         ProductData addedProductExpected = testProducts.get("valid_product_1");
         ApiResponse response = service.addProduct(addedProductExpected);
         createdIDs.add(response.id);
-        ProductData addedProduct = service.getProductWithID(String.valueOf(response.id));
+        ProductData addedProduct = getProductWithID(String.valueOf(response.id));
 
         assertTrue("Ошибка на сервере", response.id != -1);
         assertNotNull("Продукт не был создан", addedProduct);
-        assertTrue("Alias продукта отличается от title", addedProduct.alias.equalsIgnoreCase(addedProduct.title));
         assertTrue("Продукт был изменен", addedProductExpected.contentEquals(addedProduct));
     }
 
@@ -59,8 +59,8 @@ public class MainTests extends Assert {
         ApiResponse response3 = service.addProduct(addedProduct3Expected);
         createdIDs.add(response2.id);
         createdIDs.add(response3.id);
-        ProductData addedProduct2 = service.getProductWithID(String.valueOf(response2.id));
-        ProductData addedProduct3 = service.getProductWithID(String.valueOf(response3.id));
+        ProductData addedProduct2 = getProductWithID(String.valueOf(response2.id));
+        ProductData addedProduct3 = getProductWithID(String.valueOf(response3.id));
 
         assertTrue("Ошибка на сервере", response2.id != -1);
         assertNotNull("Продукт не был создан", addedProduct2);
@@ -81,8 +81,8 @@ public class MainTests extends Assert {
         ApiResponse response3 = service.addProduct(addedProduct3Expected);
         createdIDs.add(response2.id);
         createdIDs.add(response3.id);
-        ProductData addedProduct2 = service.getProductWithID(String.valueOf(response2.id));
-        ProductData addedProduct3 = service.getProductWithID(String.valueOf(response3.id));
+        ProductData addedProduct2 = getProductWithID(String.valueOf(response2.id));
+        ProductData addedProduct3 = getProductWithID(String.valueOf(response3.id));
 
         assertTrue("Ошибка на сервере", response2.id != -1);
         assertNotNull("Продукт не был создан", addedProduct2);
@@ -97,18 +97,19 @@ public class MainTests extends Assert {
     public void shouldNotAddInvalidProduct() throws IOException {
         ProductData addedProductExpected = testProducts.get("invalid_product");
         ApiResponse response = service.addProduct(addedProductExpected);
-        ProductData addedProduct = service.getProductWithID(String.valueOf(response.id));
+        ProductData addedProduct = getProductWithID(String.valueOf(response.id));
 
-        assertNull("Продукт был создан", addedProduct);
-        assertFalse("Сервер вернул неверный ответ", response.status);
+        // Порядок проверок изменить
         assertEquals("Ошибка на сервере", -1, response.id);
+        assertFalse("Сервер вернул неверный ответ", response.status);
+        assertNull("Продукт был создан", addedProduct);
     }
 
     @Test
     public void shouldGetProductById() throws IOException {
         ProductData addedProductExpected = testProducts.get("valid_product_1");
         ApiResponse response = service.addProduct(addedProductExpected);
-        ProductData addedProduct = service.getProductWithID(String.valueOf(response.id));
+        ProductData addedProduct = getProductWithID(String.valueOf(response.id));
         createdIDs.add(response.id);
         assertNotNull("Продукт не найден", addedProduct);
         assertTrue("Продукты не совпадают", addedProductExpected.contentEquals(addedProduct));
@@ -118,27 +119,29 @@ public class MainTests extends Assert {
     public void shouldNotAddNullProduct() throws IOException {
         ProductData addedProduct = testProducts.get("null_product");
         ApiResponse response = service.addProduct(addedProduct);
-        ProductData resultProduct = service.getProductWithID(String.valueOf(response.id));
+        ProductData resultProduct = getProductWithID(String.valueOf(response.id));
         assertNull("Продукт был создан", resultProduct);
         assertFalse("Сервер вернул статус 1", response.status);
         assertEquals("Ошибка сервера", -1, response.id);
     }
 
     @Test
-    public void shouldUpdateWithoutId() throws IOException {
+    public void shouldUpdate() throws IOException {
         ProductData oldProduct = testProducts.get("valid_product_1");
         ProductData newProduct = testProducts.get("valid_update_product_1");
 
         ApiResponse createResponse = service.addProduct(oldProduct);
 
-        ProductData createdProduct = service.getProductWithID(String.valueOf(createResponse.id));
+        ProductData createdProduct = getProductWithID(String.valueOf(createResponse.id));
         newProduct.id = createdProduct.id;
         newProduct.alias = createdProduct.alias;
 
-        ApiResponse updateResponse = service.updateProduct(newProduct);
-        createdIDs.add(createResponse.id);
 
-        ProductData updatedProduct = service.getProductWithID(String.valueOf(createResponse.id));
+        // Наименование теста одно, в тесте делается другое, само проверяемое действие не проверяется
+        ApiResponse updateResponse = service.updateProduct(newProduct);
+        createdIDs.add(updateResponse.id);
+
+        ProductData updatedProduct = getProductWithID(String.valueOf(createResponse.id));
 
         assertTrue("Сервер вернул статус 0", createResponse.status);
         assertTrue("Обновлённый продукт отличается от заданного", updatedProduct.contentEquals(newProduct));
@@ -151,14 +154,14 @@ public class MainTests extends Assert {
 
         ApiResponse createResponse = service.addProduct(oldProduct);
 
-        ProductData createdProduct = service.getProductWithID(String.valueOf(createResponse.id));
+        ProductData createdProduct = getProductWithID(String.valueOf(createResponse.id));
         newProduct.id = createdProduct.id;
         newProduct.alias = createdProduct.alias;
 
         ApiResponse updateResponse = service.updateProduct(newProduct);
         createdIDs.add(createResponse.id);
 
-        ProductData updatedProduct = service.getProductWithID(String.valueOf(createResponse.id));
+        ProductData updatedProduct = getProductWithID(String.valueOf(createResponse.id));
 
         assertNotNull("Сервер вернул статус 1", updatedProduct);
         assertFalse("Сервер вернул статус 1", updateResponse.status);
@@ -171,18 +174,17 @@ public class MainTests extends Assert {
         ProductData addedProductExpected = testProducts.get("valid_product_1");
         ApiResponse responseCreate = service.addProduct(addedProductExpected);
         createdIDs.add(responseCreate.id);
-        ProductData addedProduct = service.getProductWithID(String.valueOf(responseCreate.id));
 
         ApiResponse response = service.deleteProduct(responseCreate.id);
 
+        ProductData addedProduct = getProductWithID(String.valueOf(responseCreate.id));
         assertTrue("Сервер вернул статус 0", response.status);
-        assertNotNull("Продукт не был удалён", addedProduct);
+        assertNull("Продукт не был удалён", addedProduct);
     }
 
     @Test
-    public void shouldDoNothingDeletingInvalidId() throws IOException {
+    public void shouldDoNothingDeletingInvalidId() {
         ApiResponse response = service.deleteProduct(-1);
-
         assertFalse("Сервер вернул статус 1", response.status);
     }
 

@@ -1,0 +1,36 @@
+<component name="libraryTable">
+  <library name="webjars.npm.selenium.webdriver" type="repository">
+    <properties maven-id="org.webjars.npm:selenium-webdriver:4.1.2" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/selenium-webdriver/4.1.2/selenium-webdriver-4.1.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/jszip/3.10.1/jszip-3.10.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/lie/3.3.0/lie-3.3.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/immediate/3.0.6/immediate-3.0.6.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/pako/1.0.11/pako-1.0.11.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/readable-stream/2.3.7/readable-stream-2.3.7.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/core-util-is/1.0.3/core-util-is-1.0.3.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/util-deprecate/1.0.2/util-deprecate-1.0.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/inherits/2.0.4/inherits-2.0.4.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/safe-buffer/5.1.2/safe-buffer-5.1.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/string_decoder/1.1.1/string_decoder-1.1.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/process-nextick-args/2.0.1/process-nextick-args-2.0.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/isarray/1.0.0/isarray-1.0.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/setimmediate/1.0.5/setimmediate-1.0.5.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/tmp/0.2.1/tmp-0.2.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/rimraf/3.0.2/rimraf-3.0.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/glob/7.2.3/glob-7.2.3.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/once/1.4.0/once-1.4.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/wrappy/1.0.2/wrappy-1.0.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/fs.realpath/1.0.0/fs.realpath-1.0.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/inflight/1.0.6/inflight-1.0.6.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/path-is-absolute/1.0.1/path-is-absolute-1.0.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/minimatch/3.1.2/minimatch-3.1.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/brace-expansion/1.1.11/brace-expansion-1.1.11.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/balanced-match/1.0.2/balanced-match-1.0.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/concat-map/0.0.1/concat-map-0.0.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/ws/8.8.1/ws-8.8.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

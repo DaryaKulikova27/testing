@@ -23,7 +23,6 @@ public class Main {
         List<ProductData> products1 = shopOperations.getProducts();
         print(products1.stream().map(Object::toString)
                 .collect(Collectors.joining("\n")));
-        print("Find product", shopOperations.getProductWithID(String.valueOf(addedProduct.id)));
         print("Deleted product", shopOperations.deleteProduct(addedProduct.id).status);
     }
 

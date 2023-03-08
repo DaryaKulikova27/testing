@@ -2,11 +2,9 @@ package shop;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import io.restassured.parsing.Parser;
 import io.restassured.response.Response;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -29,28 +27,6 @@ public class ShopOperations {
         return t;
     }
 
-//    private Response doGetRequest(String endpoint) {
-//        RestAssured.defaultParser = Parser.JSON;
-//
-//        return
-//                given().headers("Content-Type", ContentType.JSON, "Accept", ContentType.JSON).
-//                        when().get(endpoint).
-//                        then().contentType(ContentType.JSON).extract().response();
-//    }
-//
-//    public List<ProductData> getAllProducts() {
-//        List<ProductData> products = new ArrayList<ProductData>();
-//        Response response = doGetRequest("http://shop.qatl.ru/api/products");
-//
-//        List<ProductData> jsonResponse = response.jsonPath().getList("$");
-//
-//        System.out.println(jsonResponse.size());
-//        System.out.println(jsonResponse);
-//
-//
-//        return products;
-//    }
-
     private static <T> T[] print(T... t) {
         System.out.println(Arrays.toString(t));
         return t;
@@ -65,12 +41,7 @@ public class ShopOperations {
         Response response;
         String jsonAsString;
 
-        response =
-                when().
-                        get("products").
-                        then().
-                        contentType(ContentType.JSON).
-                        extract().response();
+        response = when().get("products").then().contentType(ContentType.JSON).extract().response();
 
         jsonAsString = response.asString();
         try {
@@ -84,14 +55,10 @@ public class ShopOperations {
 
     public ApiResponse addProduct(ProductData product) {
         try {
-            Response response = given()
-                    .header("Content-Type", "application/json")
-                    .body(Converter.toJSON(product))
-                    .post("addproduct");
+            Response response = given().header("Content-Type", "application/json").body(Converter.toJSON(product)).post("addproduct");
             print(response.getBody().asString());
 
-            if (response.getStatusCode() >= 300)
-                return new ApiResponse(-1, false);
+            if (response.getStatusCode() >= 300) return new ApiResponse(-1, false);
             return Converter.toObject(response.asString(), ApiResponse.class);
         } catch (Exception e) {
             return new ApiResponse(-1, false);
@@ -100,14 +67,10 @@ public class ShopOperations {
 
     public ApiResponse updateProduct(ProductData product) {
         try {
-            Response response = given()
-                    .header("Content-Type", "application/json")
-                    .body(Converter.toJSON(product))
-                    .post("editproduct");
+            Response response = given().header("Content-Type", "application/json").body(Converter.toJSON(product)).post("editproduct");
             print(response.getBody().asString());
 
-            if (response.getStatusCode() >= 300)
-                return new ApiResponse(-1, false);
+            if (response.getStatusCode() >= 300) return new ApiResponse(-1, false);
             return Converter.toObject(response.asString(), ApiResponse.class);
         } catch (Exception e) {
             return new ApiResponse(-1, false);
@@ -116,21 +79,15 @@ public class ShopOperations {
 
     public ApiResponse deleteProduct(int productId) {
         try {
-            Response response = given()
-                    .header("Content-Type", "application/json")
-                    .delete(String.format("deleteproduct?id=%s", productId));
+            Response response = given().header("Content-Type", "application/json").delete(String.format("deleteproduct?id=%s", productId));
             print(response.getBody().asString());
 
-            if (response.getStatusCode() >= 300)
-                return new ApiResponse(-1, false);
+            if (response.getStatusCode() >= 300) return new ApiResponse(-1, false);
             return Converter.toObject(response.asString(), ApiResponse.class);
         } catch (Exception e) {
             return new ApiResponse(-1, false);
         }
     }
 
-    public ProductData getProductWithID(String id) throws IOException {
-        return getProducts().stream().filter(productData -> Objects.equals(productData.id, id)).findFirst().orElse(null);
-    }
-
+    // Перенести
 }
